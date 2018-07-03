@@ -15,9 +15,11 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView img;
     Button btnRandom;
-    int[] manghinh = {R.drawable.iconbird,R.drawable.icondog,R.drawable.iconfrog,R.drawable.iconmouse,R.drawable.iconsnake};
+    int[] manghinh = {R.drawable.iconbird, R.drawable.icondog, R.drawable.iconfrog, R.drawable.iconmouse, R.drawable.iconsnake};
     Random random;
     int index = 0;
+    CountDownTimer countDownTimer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,19 +36,22 @@ public class MainActivity extends AppCompatActivity {
 //                int index = random.nextInt(manghinh.length);
 ////
 //                img.setImageResource(manghinh[index]);
-                CountDownTimer countDownTimer = new CountDownTimer(5000,1000) {
+                countDownTimer = new CountDownTimer(5000, 1000) {
                     @Override
                     public void onTick(long millisUntilFinished) {
-                        img.setImageResource(manghinh[index++]);
+//                        index = random.nextInt(manghinh.length);
+//                        img.setImageResource(manghinh[index]);
+                        int thoigian = (int) millisUntilFinished;
+                        Log.d("BBB",(thoigian / 1000) +  "");
                     }
 
                     @Override
                     public void onFinish() {
-                        img.setImageResource(manghinh[index++]);
-                        Toast.makeText(MainActivity.this, "Ket thuc!!", Toast.LENGTH_SHORT).show();
+
                     }
                 };
                 countDownTimer.start();
+
             }
         });
     }
