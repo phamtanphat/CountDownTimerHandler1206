@@ -1,6 +1,8 @@
 package com.ptp.phamtanphat.countdowntimerhandler1206;
 
+import android.content.Context;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnRandom;
     int[] manghinh = {R.drawable.iconbird, R.drawable.icondog, R.drawable.iconfrog, R.drawable.iconmouse, R.drawable.iconsnake};
     Random random;
-    int index = 0;
-    CountDownTimer countDownTimer;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,22 +37,30 @@ public class MainActivity extends AppCompatActivity {
 //                int index = random.nextInt(manghinh.length);
 ////
 //                img.setImageResource(manghinh[index]);
-                countDownTimer = new CountDownTimer(5000, 1000) {
+//                countDownTimer = new CountDownTimer(5000, 1000) {
+//                    @Override
+//                    public void onTick(long millisUntilFinished) {
+////                        index = random.nextInt(manghinh.length);
+////                        img.setImageResource(manghinh[index]);
+//                        int thoigian = (int) millisUntilFinished;
+//                        Log.d("BBB",(thoigian / 1000) +  "");
+//                    }
+//
+//                    @Override
+//                    public void onFinish() {
+//
+//                    }
+//                };
+//                countDownTimer.start();
+
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
                     @Override
-                    public void onTick(long millisUntilFinished) {
-//                        index = random.nextInt(manghinh.length);
-//                        img.setImageResource(manghinh[index]);
-                        int thoigian = (int) millisUntilFinished;
-                        Log.d("BBB",(thoigian / 1000) +  "");
+                    public void run() {
+                        Toast.makeText(MainActivity.this, "AAA", Toast.LENGTH_SHORT).show();
+                        handler.postDelayed(this, 1000);
                     }
-
-                    @Override
-                    public void onFinish() {
-
-                    }
-                };
-                countDownTimer.start();
-
+                },1000);
             }
         });
     }
